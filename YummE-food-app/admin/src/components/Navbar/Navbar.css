@@ -1,0 +1,15 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 4%;
+}
+.navbar h2{
+    color: tomato;
+}
+.navbar p{
+    font-size: 25px;
+}
+.navbar .profile{
+    width: 40px;
+}
