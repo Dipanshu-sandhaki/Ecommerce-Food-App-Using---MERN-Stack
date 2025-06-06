@@ -120,7 +120,7 @@ Ecommerce-Food-App-Using---MERN-Stack/
 
 | Home Page                     | Menu Page                     | Cart                          | Admin Panel                     |
 | ----------------------------- | ----------------------------- | ----------------------------- | ------------------------------- |
-| ![Home](screenshots/Home.png) | ![Menu](screenshots/Menu.png) | ![Cart](screenshots/Cart.png) | ![Admin](screenshots/Admin.png) |
+| ![Home](screenshots/home.png) | ![Menu](screenshots/menu.png) | ![Cart](screenshots/cart.png) | ![Admin](screenshots/admin.png) |
 
 ---
 
