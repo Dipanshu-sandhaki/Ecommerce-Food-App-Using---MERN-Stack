@@ -6,7 +6,7 @@ A full-stack **E-Commerce Food Ordering Web Application** developed using the **
 
 ## ⚙️ Tech Stack
 
-* **Frontend:** React.js (⚡ Vite), HTML5, CSS3, Bootstrap
+* **Frontend:** React.js (⚡ Vite), HTML5, CSS3, Bootstrap, TailwindCSS
 * **Backend:** Node.js, Express.js
 * **Database:** MongoDB Atlas (Cloud)
 * **Authentication:** JWT (JSON Web Tokens)
