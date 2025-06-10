@@ -15,22 +15,15 @@ A full-stack **E-Commerce Food Ordering Web Application** developed using the **
 * **Tools:** VS Code, Git, GitHub
 
 ---
-## 🖼️ Screenshots
+### 🖼️ Screenshots
 
 <p align="center">
-  <b>Screenshots</b>
+  <img src="./screenshots/home.png" width="200"/>
+  <img src="./screenshots/menu.png" width="200"/>
+  <img src="./screenshots/cart.png" width="200"/>
+  <img src="./screenshots/admin.png" width="200"/>
 </p>
 
-<p align="center">
-  <table>
-    <tr>
-      <td><img src="screenshots/home.png" width="200"/></td>
-      <td><img src="screenshots/menu.png" width="200"/></td>
-      <td><img src="screenshots/cart.png" width="200"/></td>
-      <td><img src="screenshots/admin.png" width="200"/></td>
-    </tr>
-  </table>
-</p>
 
 
 ## ✨ Key Features
