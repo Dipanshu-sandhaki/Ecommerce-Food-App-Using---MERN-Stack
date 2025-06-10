@@ -17,14 +17,10 @@ A full-stack **E-Commerce Food Ordering Web Application** developed using the **
 ---
 ### 🖼️ Screenshots
 
-<p align="center">
-  <img src="./screenshots/home.png" width="200"/>
-  <img src="./screenshots/menu.png" width="200"/>
-  <img src="./screenshots/cart.png" width="200"/>
-  <img src="./screenshots/admin.png" width="200"/>
-</p>
-
-
+![Home](screenshots/home.png)
+![Menu](screenshots/menu.png)
+![Cart](screenshots/cart.png)
+![Admin](screenshots/admin.png)
 
 ## ✨ Key Features
 
