@@ -118,9 +118,9 @@ Ecommerce-Food-App-Using---MERN-Stack/
 
 > Add screenshots inside `/screenshots/` folder and reference below.
 
-| Home Page                     | Menu Page                     | Cart                          | Admin Panel                     |
-| ----------------------------- | ----------------------------- | ----------------------------- | ------------------------------- |
-| ![Home](my-food-app/screenshots/home.png) | ![Menu](my-food-app/screenshots/menu.png) | ![Cart](my-food-app/screenshots/cart.png) | ![Admin](my-food-app/screenshots/admin.png) |
+| Home Page | Menu Page | Cart | Admin Panel |
+|-----------|-----------|------|--------------|
+| ![Home](screenshots/home.png) | ![Menu](screenshots/menu.png) | ![Cart](screenshots/cart.png) | ![Admin](screenshots/admin.png) |
 
 
 ---
