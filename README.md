@@ -15,6 +15,23 @@ A full-stack **E-Commerce Food Ordering Web Application** developed using the **
 * **Tools:** VS Code, Git, GitHub
 
 ---
+## 🖼️ Screenshots
+
+<p align="center">
+  <b>Screenshots</b>
+</p>
+
+<p align="center">
+  <table>
+    <tr>
+      <td><img src="screenshots/home.png" width="200"/></td>
+      <td><img src="screenshots/menu.png" width="200"/></td>
+      <td><img src="screenshots/cart.png" width="200"/></td>
+      <td><img src="screenshots/admin.png" width="200"/></td>
+    </tr>
+  </table>
+</p>
+
 
 ## ✨ Key Features
 
@@ -111,19 +128,6 @@ Ecommerce-Food-App-Using---MERN-Stack/
 │
 └── README.md                # Project documentation
 ```
-
----
-
-## 🖼️ Screenshots
-
-> Add screenshots inside `/screenshots/` folder and reference below.
-
-| Home Page | Menu Page | Cart | Admin Panel |
-|-----------|-----------|------|--------------|
-| ![Home](screenshots/home.png) | ![Menu](screenshots/menu.png) | ![Cart](screenshots/cart.png) | ![Admin](screenshots/admin.png) |
-
-
----
 
 ## 🔧 Future Enhancements
 
