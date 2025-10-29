@@ -10,20 +10,29 @@ import LoginPopup from "./components/LoginPopup/LoginPopup";
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
 
+  // 1. State ko Navbar se yahan move kiya
+  const [menu, setMenu] = useState("home"); // Default "home" hai
+
   return (
     <>
       {showLogin ? <LoginPopup setShowLogin={setShowLogin} /> : <></>}
       <div className="app">
-        <Navbar setShowLogin={setShowLogin} />
+        {/* 2. State aur setter dono Navbar ko pass kiye */}
+        <Navbar
+          menu={menu}
+          setMenu={setMenu}
+          setShowLogin={setShowLogin}
+        />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/cart" element={<Cart />} /> 
-          <Route path="/order" element={<PlaceOrder/>} /> 
+          {/* 3. Setter function ko Home page ko pass kiya */}
+          <Route path="/" element={<Home setMenu={setMenu} />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/order" element={<PlaceOrder />} />
         </Routes>
       </div>
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;

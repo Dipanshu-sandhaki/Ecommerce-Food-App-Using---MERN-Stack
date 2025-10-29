@@ -1,0 +1,75 @@
+/* Main container */
+.explore-options {
+  width: 90%;
+  max-width: 800px; /* Desktop par max width */
+  margin: 50px auto; /* Page ke center mein */
+  font-family: Arial, sans-serif;
+}
+
+.explore-options h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+/* Har accordion item ke liye */
+.accordion-item {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px; /* Rounded corners */
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Zomato jaisa halka shadow */
+  overflow: hidden; /* Smooth animation ke liye zaroori */
+}
+
+/* Item ka header (jahan title hai) */
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px;
+  cursor: pointer;
+  user-select: none; /* Text select na ho */
+}
+
+.accordion-header p {
+  font-size: 18px;
+  color: #333;
+  margin: 0;
+}
+
+/* CSS se banaya gaya Arrow (icon) */
+.arrow {
+  border: solid #555;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg); /* Neeche (closed) */
+  transition: transform 0.3s ease;
+}
+
+.arrow.open {
+  transform: rotate(-135deg); /* Upar (open) */
+}
+
+/* Content jo hide/show hoga */
+.accordion-content {
+  max-height: 0; /* Default mein band */
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+  padding: 0 20px; /* Band hai toh padding nahi */
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Jab 'open' class lagti hai (JS se) */
+.accordion-content.open {
+  max-height: 500px; /* Khulne par height */
+  transition: max-height 0.4s ease-in, padding 0.3s ease-in;
+  padding: 0px 20px 20px 20px; /* Khulne par padding */
+}
+
+.accordion-content p {
+  margin: 0;
+}

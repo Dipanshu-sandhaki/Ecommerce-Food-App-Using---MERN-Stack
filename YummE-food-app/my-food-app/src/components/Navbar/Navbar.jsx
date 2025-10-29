@@ -1,17 +1,20 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react' // useState yahan se hat gaya
 import { Link, useNavigate } from 'react-router-dom'
 import './Navbar.css'
 import { assets } from '../../assets/assets'
 import { StoreContext } from '../../context/StoreContext'
-import Swal from 'sweetalert2' // Import SweetAlert
+import Swal from 'sweetalert2' 
 
-const Navbar = ({ setShowLogin }) => {
-  const [menu, setMenu] = useState("home")
+// 1. 'menu' aur 'setMenu' ko props mein receive kiya
+const Navbar = ({ menu, setMenu, setShowLogin }) => {
+  
+  // 2. Yahan se 'useState' waali line DELETE ho gayi
+  // const [menu, setMenu] = useState("home") // <-- YEH LINE DELETE KARDI
+
   const { getTotalCartAmount, token, setToken } = useContext(StoreContext)
   const navigate = useNavigate()
 
   const logout = async () => {
-    // SweetAlert confirmation for logout
     const result = await Swal.fire({
       title: 'Are you sure?',
       text: "You will be logged out!",
@@ -23,12 +26,9 @@ const Navbar = ({ setShowLogin }) => {
     })
 
     if (result.isConfirmed) {
-      // Perform logout operations
       localStorage.removeItem("token")
       setToken("")
       navigate("/")
-
-      // SweetAlert for successful logout
       Swal.fire({
         position: "top-end",
         icon: "success",
@@ -43,6 +43,7 @@ const Navbar = ({ setShowLogin }) => {
     <div className='navbar'>
       <Link to='/'><img src={assets.logo} alt="Logo" className="logo" /></Link>
       <ul className="navbar-menu">
+        {/* 3. Baaki sab same rahega, yeh ab props waale state se kaam karega */}
         <Link to='/' onClick={() => setMenu("home")} className={menu === "home" ? "active" : ""}>Home</Link>
         <a href='#explore-menu' onClick={() => setMenu("menu")} className={menu === "menu" ? "active" : ""}>Menu</a>
         <a href='#app-download' onClick={() => setMenu("mobile-app")} className={menu === "mobile-app" ? "active" : ""}>Mobile-app</a>
