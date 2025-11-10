@@ -1,11 +1,13 @@
-.header{
+.header {
     height: 34vw;
-    margin: 30px auto;
+    margin: 60px auto 30px;
     background: url('/header_img.png') no-repeat;
     background-size: contain;
     position: relative;
 }
-.header-contents{
+
+/* contents */
+.header-contents {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -16,16 +18,23 @@
     left: 6vw;
     animation: fadeIn 3s;
 }
+
+/* heading */
 .header-contents h2 {
     font-weight: 500;
     color: white;
     font-size: max(4.5vw,22px);
 }
-.header-contents p{
+
+/* paragraph */
+.header-contents p {
     color: white;
     font-size: 1vw;
 }
-.header-contents button{
+
+/* 🔥 SAME STYLE applied to both <button> and <a> */
+.header-contents button,
+.header-contents .view-menu-btn {
     border: none;
     color: #747474;
     font-weight: 500;
@@ -34,23 +43,41 @@
     font-size: max(1vw,13px);
     border-radius: 50px;
     cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
 }
-.header-contents button:hover{
+
+/* hover effect */
+.header-contents button:hover,
+.header-contents .view-menu-btn:hover {
     color: tomato;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
+
+/* responsive */
 @media (max-width:1050px) {
-    .header-contents{
+    .header-contents {
         max-width: 45%;
     }
 }
+
 @media (max-width:750px) {
-    .header-contents{
+    .header-contents {
         max-width: 65%;
     }
-    .header-contents p{
+    .header-contents p {
         display: none;
     }
-    .header-contents button{
+    .header-contents button,
+    .header-contents .view-menu-btn {
         padding: 2vw 4vw;
     }
+}
+
+/* animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
