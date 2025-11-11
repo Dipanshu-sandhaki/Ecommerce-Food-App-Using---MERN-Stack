@@ -1,100 +1,105 @@
 import React, { useState } from 'react';
 import './ExploreOptions.css';
 
-// Rich, user-friendly content (JSX) for each option
+// Compact, professional English content for each option
 const optionsData = [
   {
-    title: 'Popular cuisines near me',
+    title: 'Popular Cuisines Near Me',
     content: (
       <div>
         <p>
-          Yahan commonly ordered aur locally popular cuisines ki list di gayi hai. 
-          Agar aap quick idea chahte ho to in cuisines ko try karo:
+          Explore the most loved cuisines people enjoy around you. From timeless
+          classics to trending flavors, here are some must-try picks:
         </p>
         <ul>
-          <li><strong>North Indian</strong> — Butter chicken, Paneer dishes, Dal makhani, Tandoori items.</li>
-          <li><strong>South Indian</strong> — Dosa, Idli, Sambar, Rava dishes, Filter coffee.</li>
-          <li><strong>Chinese/Indo-Chinese</strong> — Hakka noodles, Manchurian, Chilli chicken, Fried rice.</li>
-          <li><strong>Fast Food & Pizza</strong> — Burgers, Fries, Veg/Non-veg Pizzas, Wraps.</li>
-          <li><strong>Biryani & Kebabs</strong> — Hyderabadi/Calcutta style biryani, Seekh kebab.</li>
-          <li><strong>Street & Regional</strong> — Chaat, Momos, Parathas, Regional specialities (e.g., Kolkata rolls).</li>
+          <li><strong>North Indian</strong> — Butter Chicken, Paneer Tikka, Dal Makhani, Tandoori delights.</li>
+          <li><strong>South Indian</strong> — Masala Dosa, Idli, Sambar, Uttapam, Filter Coffee.</li>
+          <li><strong>Chinese / Indo-Chinese</strong> — Hakka Noodles, Chilli Chicken, Manchurian, Fried Rice.</li>
+          <li><strong>Fast Food & Pizza</strong> — Burgers, Fries, Wraps, Classic Veg & Non-Veg Pizzas.</li>
+          <li><strong>Biryani & Kebabs</strong> — Hyderabadi Biryani, Kolkata Biryani, Seekh & Shami Kebabs.</li>
+          <li><strong>Street & Regional</strong> — Chaat, Momos, Parathas, and iconic local favorites.</li>
         </ul>
         <p>
-          Tip: agar mood nahin decide ho raha toh “Popular near you” filter apply karo — local favourites dikhenge.
+          Tip: Can’t decide what to eat? Check the “Popular Near You” filter for trending dishes in your area.
         </p>
       </div>
     ),
   },
   {
-    title: 'Popular restaurant types near me',
+    title: 'Popular Restaurant Types Near Me',
     content: (
       <div>
-        <p>Alag-alag dining experiences ke hisaab se restaurants ke typical types:</p>
+        <p>
+          Discover restaurants based on your mood and dining style. Whether you
+          want to grab a coffee or celebrate an occasion, there’s something for everyone:
+        </p>
         <ul>
-          <li><strong>Cafés</strong> — Coffee, sandwiches, light meals; relaxed vibe (work-friendly).</li>
-          <li><strong>Bakeries</strong> — Fresh breads, pastries, quick breakfasts and desserts.</li>
-          <li><strong>Casual Dining</strong> — Family friendly, full menu, good for group meals.</li>
-          <li><strong>Fine Dining</strong> — Special occasion restaurants with curated menus and higher pricing.</li>
-          <li><strong>Quick Bites / QSR</strong> — Fast delivery & pickup (burgers, wraps, pizzas).</li>
-          <li><strong>Street Food / Stalls</strong> — Local street vendors offering authentic regional snacks.</li>
+          <li><strong>Cafés</strong> — Coffee, sandwiches, and comfort bites in a cozy space.</li>
+          <li><strong>Bakeries</strong> — Fresh breads, pastries, desserts, and light breakfast options.</li>
+          <li><strong>Casual Dining</strong> — Family-friendly spots with complete menus for group meals.</li>
+          <li><strong>Fine Dining</strong> — Premium ambience, curated menus, and great service for special days.</li>
+          <li><strong>Quick Bites / QSR</strong> — Fast delivery and take-away meals like burgers and wraps.</li>
+          <li><strong>Street Food</strong> — Local stalls serving authentic regional snacks and flavors.</li>
         </ul>
         <p>
-          Use case: agar quick lunch chahiye to QSR ya cafés dekhho; agar celebration hai to Casual/Fine dining prefer karo.
+          Need a quick lunch? Go for cafés or QSRs. Planning a celebration? Choose Casual or Fine Dining.
         </p>
       </div>
     ),
   },
   {
-    title: 'Top restaurant chains',
+    title: 'Top Restaurant Chains',
     content: (
       <div>
         <p>
-          Nationwide aur international chains jo aksar har city mein mil jaate hain — reliable quality aur fast delivery:
+          Discover trusted restaurant chains known for consistency, quick delivery,
+          and reliable taste across major cities:
         </p>
         <ul>
-          <li><strong>Pizza chains:</strong> Domino’s, Pizza Hut, Papa John’s (regional variants may apply).</li>
-          <li><strong>Burgers & Fast Food:</strong> McDonald’s, Burger King, Wendy’s (city-specific brands also common).</li>
-          <li><strong>Coffee & Cafés:</strong> Barista, Starbucks (selected cities), CCD (India).</li>
-          <li><strong>Multi-cuisine chains:</strong> Mainland China, Sagar Ratna, Absolute Barbecues (depending on region).</li>
+          <li><strong>Pizza Chains:</strong> Domino’s, Pizza Hut, Papa John’s.</li>
+          <li><strong>Burgers & Fast Food:</strong> McDonald’s, Burger King, Wendy’s.</li>
+          <li><strong>Coffee & Cafés:</strong> Starbucks, Barista, Café Coffee Day.</li>
+          <li><strong>Multi-Cuisine Chains:</strong> Mainland China, Sagar Ratna, Absolute Barbecues.</li>
         </ul>
         <p>
-          Note: chains are good for consistent taste; for local specialties, try independent or highly-rated local restaurants.
+          Looking for familiar taste and quick service? Try these top chains, or explore highly-rated local gems nearby.
         </p>
       </div>
     ),
   },
   {
-    title: 'Cities we deliver to',
+    title: 'Cities We Deliver To',
     content: (
       <div>
         <p>
-          Humari delivery coverage frequently expand hoti rehti hai. Common service cities (example list — update per your app data):
+          Our delivery network keeps growing! Here are some of the cities where
+          you can enjoy fast and fresh food delivery:
         </p>
         <ul>
-          <li><strong>Metro / Tier-1:</strong> Delhi NCR (Gurgaon, Noida), Mumbai, Bangalore, Chennai, Hyderabad, Kolkata.</li>
-          <li><strong>Tier-2 & 3:</strong> Pune, Ahmedabad, Lucknow, Chandigarh, Dehradun, Indore, Jaipur.</li>
+          <li><strong>Metro / Tier-1:</strong> Delhi NCR, Mumbai, Bengaluru, Chennai, Hyderabad, Kolkata.</li>
+          <li><strong>Tier-2 & Tier-3:</strong> Pune, Ahmedabad, Jaipur, Lucknow, Chandigarh, Dehradun, Indore.</li>
         </ul>
         <p>
-          Tip: Enter your pin code on the site/app to see exact availability — kuch restaurants sirf selected areas mein deliver karte hain.
+          Tip: Enter your pin code on the app to view exact delivery availability — some restaurants serve limited zones only.
         </p>
       </div>
     ),
   },
   {
-    title: 'Popular dishes near me',
+    title: 'Popular Dishes Near Me',
     content: (
       <div>
         <p>
-          Local favourites jo aksar top orders mein hote hain — agar decide nahin kar pa rahe ho to inme se try karo:
+          Craving something specific? Check out the most-ordered and top-rated dishes people love near you:
         </p>
         <ul>
           <li><strong>Vegetarian:</strong> Paneer Butter Masala, Dal Tadka, Chole Bhature, Veg Biryani, Masala Dosa.</li>
-          <li><strong>Non-vegetarian:</strong> Chicken Biryani, Butter Chicken, Tandoori Chicken, Chicken Tikka.</li>
-          <li><strong>Snacks & Street:</strong> Momos, Pav Bhaji, Samosa, Pani Puri/Chaat.</li>
-          <li><strong>Desserts:</strong> Gulab Jamun, Kulfi, Cheesecake, Brownie.</li>
+          <li><strong>Non-Vegetarian:</strong> Chicken Biryani, Butter Chicken, Tandoori Chicken, Chicken Tikka.</li>
+          <li><strong>Snacks & Street Food:</strong> Momos, Pav Bhaji, Samosa, Pani Puri, Chaat.</li>
+          <li><strong>Desserts:</strong> Gulab Jamun, Kulfi, Brownie, Cheesecake, Ice Cream Sundae.</li>
         </ul>
         <p>
-          Pro tip: check “most ordered” or “bestsellers” badge on each restaurant card — wo dish local customers se highly rated hoti hai.
+          Pro Tip: Look for “Bestseller” or “Most Ordered” tags on restaurant menus — those dishes are top favorites among locals.
         </p>
       </div>
     ),
@@ -102,7 +107,6 @@ const optionsData = [
 ];
 
 const ExploreOptions = () => {
-  // kaun sa item khula hai (null means all closed)
   const [openIndex, setOpenIndex] = useState(null);
 
   const handleItemClick = (index) => {
@@ -111,7 +115,7 @@ const ExploreOptions = () => {
 
   return (
     <div className="explore-options">
-      <h2>Explore options near me</h2>
+      <h2>Explore Options Near Me</h2>
       <div className="accordion-list">
         {optionsData.map((item, index) => (
           <div className="accordion-item" key={index}>
@@ -127,11 +131,19 @@ const ExploreOptions = () => {
               }}
             >
               <p>{item.title}</p>
-              <span className={openIndex === index ? 'arrow open' : 'arrow'} aria-hidden="true"></span>
+              <span
+                className={openIndex === index ? 'arrow open' : 'arrow'}
+                aria-hidden="true"
+              ></span>
             </div>
 
-            <div className={openIndex === index ? 'accordion-content open' : 'accordion-content'}>
-              {/* content is JSX node */}
+            <div
+              className={
+                openIndex === index
+                  ? 'accordion-content open'
+                  : 'accordion-content'
+              }
+            >
               {item.content}
             </div>
           </div>

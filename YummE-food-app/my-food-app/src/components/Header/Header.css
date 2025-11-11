@@ -1,9 +1,11 @@
 .header {
     height: 34vw;
     margin: 60px auto 30px;
-    background: url('/header_img.png') no-repeat;
-    background-size: contain;
+    background: url('../../assets/header_img.png') no-repeat center center;
+    background-size: cover;
     position: relative;
+    border-radius: 25px;
+    overflow: hidden;
 }
 
 /* contents */
@@ -19,20 +21,17 @@
     animation: fadeIn 3s;
 }
 
-/* heading */
 .header-contents h2 {
     font-weight: 500;
     color: white;
-    font-size: max(4.5vw,22px);
+    font-size: max(4.5vw, 22px);
 }
 
-/* paragraph */
 .header-contents p {
     color: white;
     font-size: 1vw;
 }
 
-/* 🔥 SAME STYLE applied to both <button> and <a> */
 .header-contents button,
 .header-contents .view-menu-btn {
     border: none;
@@ -40,7 +39,7 @@
     font-weight: 500;
     padding: 1vw 2.3vw;
     background-color: white;
-    font-size: max(1vw,13px);
+    font-size: max(1vw, 13px);
     border-radius: 50px;
     cursor: pointer;
     text-decoration: none;
@@ -48,36 +47,58 @@
     transition: all 0.3s ease;
 }
 
-/* hover effect */
 .header-contents button:hover,
 .header-contents .view-menu-btn:hover {
     color: tomato;
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* responsive */
-@media (max-width:1050px) {
-    .header-contents {
-        max-width: 45%;
+/* ✅ Compact image look for mobile */
+@media (max-width: 768px) {
+    .header {
+        height: 55vw; /* slightly taller so image fits compactly */
+        background-position: center top;
+        background-size: cover; /* keep full look, not zoomed */
+        border-radius: 22px;
     }
-}
 
-@media (max-width:750px) {
     .header-contents {
-        max-width: 65%;
+        max-width: 70%;
+        left: 5vw;
+        bottom: 8%;
     }
+
     .header-contents p {
-        display: none;
+        display: none; /* hide text for clean mobile view */
     }
+
     .header-contents button,
     .header-contents .view-menu-btn {
         padding: 2vw 4vw;
     }
 }
 
+@media (max-width: 480px) {
+    .header {
+        height: 60vw; /* compact but full visible look */
+        background-position: center center;
+        border-radius: 18px;
+    }
+
+    .header-contents h2 {
+        font-size: max(5vw, 20px);
+    }
+}
+
 /* animation */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
