@@ -1,0 +1,15 @@
+# Prevent Jekyll from breaking due to Liquid syntax inside node_modules
+exclude:
+  - "backend/node_modules"
+  - "admin/node_modules"
+  - "my-food-app/node_modules"
+  - node_modules
+  - "**/node_modules/**"
+
+# Optional: speed up build, skip JS/CSS build assets
+keep_files:
+  - assets
+  - static
+
+markdown: kramdown
+highlighter: rouge
