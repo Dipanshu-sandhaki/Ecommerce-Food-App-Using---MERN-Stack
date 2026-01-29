@@ -7,7 +7,7 @@ const StoreContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({})
   const [food_list, setFoodList] = useState([])
   const [token, setToken] = useState(null) // canonical empty state is null
-  const url = "http://localhost:4000"
+  const url = import.meta.env.VITE_API_URL || "https://yumme-backend.onrender.com";
 
   const addToCart = (itemId) => {
     setCartItems((prev) => ({
