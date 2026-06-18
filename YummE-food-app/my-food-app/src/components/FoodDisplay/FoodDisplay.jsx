@@ -6,23 +6,26 @@ import Fooditem from '../Fooditem/Fooditem'
 const FoodDisplay = ({ category }) => {
   const { food_list } = useContext(StoreContext)
 
-  // Normalize category name for consistent comparison
   const normalizedCategory = category?.toLowerCase().trim()
 
+  const filteredItems = food_list.filter(item => {
+    const itemCategory = item?.category?.toLowerCase().trim()
+    return normalizedCategory === 'all' || itemCategory === normalizedCategory
+  })
+
   return (
-    <div className='food-display' id='food-display'>
-      <h2>Top dishes near you</h2>
-      <div className="food-display-list">
-        {food_list
-          .filter(item => {
-            // Normalize item category safely
-            const itemCategory = item?.category?.toLowerCase().trim()
-            return (
-              normalizedCategory === 'all' ||
-              itemCategory === normalizedCategory
-            )
-          })
-          .map((item, index) => (
+    <section className='food-display' id='food-display'>
+      <div className='food-display-header'>
+        <div>
+          <span className='food-display-eyebrow'>Fresh & Delicious</span>
+          <h2>Top Dishes Near You</h2>
+        </div>
+        <span className='food-display-count'>{filteredItems.length} items</span>
+      </div>
+
+      {filteredItems.length > 0 ? (
+        <div className='food-display-grid'>
+          {filteredItems.map((item, index) => (
             <Fooditem
               key={item._id || index}
               id={item._id}
@@ -31,10 +34,16 @@ const FoodDisplay = ({ category }) => {
               price={item.price}
               image={item.image}
             />
-          ))
-        }
-      </div>
-    </div>
+          ))}
+        </div>
+      ) : (
+        <div className='food-display-empty'>
+          <span className='empty-plate'>🍽️</span>
+          <h3>No dishes found</h3>
+          <p>Try browsing a different category</p>
+        </div>
+      )}
+    </section>
   )
 }
 

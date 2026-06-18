@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import './Navbar.css'
 import { assets } from '../../assets/assets'
 import { StoreContext } from '../../context/StoreContext'
@@ -8,13 +8,11 @@ import Swal from 'sweetalert2'
 const Navbar = ({ menu, setMenu, setShowLogin }) => {
   const { getTotalCartAmount, token, setToken } = useContext(StoreContext)
   const navigate = useNavigate()
-
-  // ref to header to measure height
+  const location = useLocation()
   const headerRef = useRef(null)
   const [headerHeight, setHeaderHeight] = useState(0)
-
-  // mobile hamburger state (minimal)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
     const measure = () => {
@@ -22,10 +20,43 @@ const Navbar = ({ menu, setMenu, setShowLogin }) => {
         setHeaderHeight(headerRef.current.getBoundingClientRect().height)
       }
     }
+    
+    const handleScroll = () => {
+      const scrollPos = window.scrollY
+      setScrolled(scrollPos > 20)
+
+      if (location.pathname === '/') {
+        if (scrollPos < 300) {
+          setMenu('home')
+        } else {
+          const sections = [
+            { id: 'explore-menu', name: 'menu' },
+            { id: 'app-download', name: 'mobile-app' },
+            { id: 'footer', name: 'contact-us' }
+          ]
+
+          for (let i = sections.length - 1; i >= 0; i--) {
+            const section = document.getElementById(sections[i].id)
+            if (section && scrollPos >= section.offsetTop - 150) {
+              setMenu(sections[i].name)
+              break
+            }
+          }
+        }
+      }
+    }
+
     measure()
     window.addEventListener('resize', measure)
-    return () => window.removeEventListener('resize', measure)
-  }, [])
+    window.addEventListener('scroll', handleScroll)
+    
+    handleScroll()
+
+    return () => {
+      window.removeEventListener('resize', measure)
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [setMenu, location.pathname])
 
   const logout = async () => {
     const result = await Swal.fire({
@@ -33,8 +64,8 @@ const Navbar = ({ menu, setMenu, setShowLogin }) => {
       text: "You will be logged out!",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
+      confirmButtonColor: '#f43f5e',
+      cancelButtonColor: '#94a3b8',
       confirmButtonText: 'Yes, logout!'
     })
 
@@ -52,7 +83,6 @@ const Navbar = ({ menu, setMenu, setShowLogin }) => {
     }
   }
 
-  // handle nav click both desktop & mobile (closes mobile menu)
   const handleNavClick = (key) => {
     setMenu(key)
     setMobileOpen(false)
@@ -60,15 +90,14 @@ const Navbar = ({ menu, setMenu, setShowLogin }) => {
 
   return (
     <>
-      {/* Fixed full-width navbar */}
-      <header ref={headerRef} className="navbar-fixed" role="banner">
+      <header ref={headerRef} className={`navbar-fixed ${scrolled ? 'scrolled' : ''}`} role="banner">
         <div className="navbar-inner">
           <Link to='/' className="logo-link" onClick={() => handleNavClick('home')}>
             <img src={assets.logo} alt="Logo" className="logo" />
           </Link>
 
           <nav className="nav-desktop" aria-label="Primary navigation">
-            <ul className="navbar-menu" role="menubar" aria-label="Primary">
+            <ul className="navbar-menu" role="menubar">
               <li role="none">
                 <Link role="menuitem" to='/' onClick={() => handleNavClick("home")} className={menu === "home" ? "active" : ""}>Home</Link>
               </li>
@@ -85,11 +114,7 @@ const Navbar = ({ menu, setMenu, setShowLogin }) => {
           </nav>
 
           <div className="navbar-right">
-            <button className="icon-btn" aria-label="Search">
-              <img src={assets.search_icon} alt="Search" />
-            </button>
-
-            <div className="navbar-search-icon" aria-hidden="false">
+            <div className="navbar-search-icon">
               <Link to='/cart' aria-label="Cart" onClick={() => setMobileOpen(false)}>
                 <img src={assets.basket_icon} alt="Basket" />
               </Link>
@@ -100,16 +125,15 @@ const Navbar = ({ menu, setMenu, setShowLogin }) => {
               <button className="signin-btn" onClick={() => { setShowLogin(true); setMobileOpen(false); }}>Sign in</button>
             ) : (
               <div className='navbar-profile'>
-                <img src={assets.profile_icon} alt="Profile" />
-                <ul className="nav-profile-dropdown" role="menu" aria-label="Profile menu">
-                  <li role="menuitem" className="profile-item"><img src={assets.bag_icon} alt="" /><p>Orders</p></li>
+                <img src={assets.profile_icon} alt="Profile" className="profile-avatar" />
+                <ul className="nav-profile-dropdown" role="menu">
+                  <li role="menuitem" className="profile-item"><img src={assets.bag_icon} alt="" /><span>Orders</span></li>
                   <hr />
-                  <li role="menuitem" onClick={logout} className="profile-item"><img src={assets.logout_icon} alt="" /><p>Logout</p></li>
+                  <li role="menuitem" onClick={logout} className="profile-item"><img src={assets.logout_icon} alt="" /><span>Logout</span></li>
                 </ul>
               </div>
             )}
 
-            {/* Hamburger (visible on mobile only via CSS) */}
             <button
               className={`hamburger ${mobileOpen ? 'is-open' : ''}`}
               aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
@@ -121,18 +145,16 @@ const Navbar = ({ menu, setMenu, setShowLogin }) => {
           </div>
         </div>
 
-        {/* Mobile dropdown (minimal, matches desktop links and closes on click) */}
         <div className={`mobile-dropdown ${mobileOpen ? 'open' : ''}`} aria-hidden={!mobileOpen}>
           <ul>
-            <li><Link to='/' onClick={() => handleNavClick("home")}>Home</Link></li>
-            <li><a href='#explore-menu' onClick={() => handleNavClick("menu")}>Menu</a></li>
-            <li><a href='#app-download' onClick={() => handleNavClick("mobile-app")}>Mobile-app</a></li>
-            <li><a href='#footer' onClick={() => handleNavClick("contact-us")}>Contact us</a></li>
+            <li><Link to='/' onClick={() => handleNavClick("home")} className={menu === "home" ? "active" : ""}>Home</Link></li>
+            <li><a href='#explore-menu' onClick={() => handleNavClick("menu")} className={menu === "menu" ? "active" : ""}>Menu</a></li>
+            <li><a href='#app-download' onClick={() => handleNavClick("mobile-app")} className={menu === "mobile-app" ? "active" : ""}>Mobile-app</a></li>
+            <li><a href='#footer' onClick={() => handleNavClick("contact-us")} className={menu === "contact-us" ? "active" : ""}>Contact us</a></li>
           </ul>
         </div>
       </header>
 
-      {/* Spacer that keeps the page content from going under the fixed navbar */}
       <div style={{ height: headerHeight }} aria-hidden="true" />
     </>
   )

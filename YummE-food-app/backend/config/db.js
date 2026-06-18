@@ -1,5 +1,12 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
+import dns from "dns";
 
-export const connectDB = async () =>{
-    await mongoose.connect('mongodb+srv://dipanshu:HelloDarling06@cluster0.8qqnlsd.mongodb.net/food-del').then(()=>console.log("Database connected"));
-}
+dns.setServers(["8.8.8.8", "8.8.4.4"]);
+dns.setDefaultResultOrder("ipv4first");
+
+export const connectDB = async () => {
+    await mongoose
+        .connect(process.env.MONGO_URI)
+        .then(() => console.log("Database connected"))
+        .catch((err) => console.log("DB Error:", err.message));
+};
